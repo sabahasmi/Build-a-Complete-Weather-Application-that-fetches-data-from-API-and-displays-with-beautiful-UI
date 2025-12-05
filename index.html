@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Modern Weather — Lottie + 5-day Forecast</title>
+
+  <!-- Lottie player -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js" defer></script>
+
+  <!-- Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="left">
+        <button id="geoBtn" class="icon-btn" title="Use my location">
+        </button>
+        <div class="search">
+          <input id="cityInput" placeholder="Enter city, e.g. London" />
+          <button id="searchBtn">Search</button>
+        </div>
+      </div>
+
+      <div class="right">
+        <button id="themeToggle" class="icon-btn" title="Toggle theme">🌗</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Animated background (Lottie) container -->
+      <div id="lottie" class="lottie-bg" aria-hidden="true"></div>
+
+      <section class="card current-card">
+        <div class="card-content">
+          <div class="location-row">
+            <h1 id="location">—</h1>
+            <p id="dateText" class="muted"></p>
+          </div>
+
+          <div class="current">
+            <img id="icon" class="weather-icon" alt="weather icon" />
+            <div class="temp-block">
+              <div id="temp" class="temp">--°C</div>
+              <div id="desc" class="desc">—</div>
+            </div>
+          </div>
+
+          <div class="meta-row">
+            <div class="meta">
+              <div class="meta-title">Humidity</div>
+              <div id="humidity" class="meta-value">—</div>
+            </div>
+            <div class="meta">
+              <div class="meta-title">Wind</div>
+              <div id="wind" class="meta-value">—</div>
+            </div>
+            <div class="meta">
+              <div class="meta-title">Pressure</div>
+              <div id="pressure" class="meta-value">—</div>
+            </div>
+          </div>
+
+          <div id="controls" class="controls">
+            <button id="refreshBtn" class="btn">Refresh</button>
+            <div id="status" class="status muted">Ready</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card forecast-card">
+        <h2>5-Day Forecast</h2>
+        <div id="forecastList" class="forecast-list">
+          <!-- forecast items injected here -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer muted">
+      Built by Saba Hasmi
+    </footer>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

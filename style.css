@@ -1,0 +1,153 @@
+:root{
+  --bg:#0f1724;
+  --card: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.06);
+  --text:#e6eef8;
+  --muted: #9fb0c9;
+  --accent: #7dd3fc;
+  --accent-2: #60a5fa;
+  --card-radius: 16px;
+  --shadow: 0 10px 30px rgba(2,6,23,0.6);
+}
+
+*{box-sizing:border-box;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+html,body,#root{height:100%;}
+
+body{
+  margin:0;
+  background: linear-gradient(180deg,#071426 0%, #0f3b64 60%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+/* App wrapper */
+.app{
+  width:100%;
+  max-width:980px;
+  margin:0 auto;
+}
+
+/* Topbar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.left{display:flex;align-items:center;gap:12px;}
+.icon-btn{
+  background:transparent;border:none;padding:10px;border-radius:12px;color:var(--text);cursor:pointer;font-size:18px;
+}
+.search{
+  display:flex;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  padding:6px;border-radius:40px;align-items:center;gap:8px;
+  box-shadow: 0 6px 22px rgba(3,7,18,0.6);
+}
+.search input{
+  border:none;background:transparent;padding:8px 12px;color:var(--text);outline:none;min-width:220px;
+}
+.search button{
+  background:var(--accent-2);border:none;color:#030617;padding:8px 14px;border-radius:28px;cursor:pointer;font-weight:600;
+}
+
+/* Main layout */
+.main{
+  display:grid;
+  grid-template-columns: 1fr 420px;
+  gap:18px;
+  align-items:start;
+}
+
+/* Lottie background container (absolute) */
+.lottie-bg{
+  position: absolute;
+  inset:0;
+  z-index:0;
+  opacity:0.18;
+  pointer-events:none;
+}
+
+/* Card style */
+.card{
+  position:relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: var(--card-radius);
+  padding:18px;
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  z-index:1;
+}
+
+.current-card{grid-column:1/2;}
+.forecast-card{grid-column:2/3;min-height:360px;}
+
+/* Current card content */
+.card-content{display:flex;flex-direction:column;gap:12px;}
+.location-row{display:flex;flex-direction:column;gap:2px;}
+.location-row h1{margin:0;font-size:20px;}
+.muted{color:var(--muted);font-size:13px;}
+
+.current{display:flex;align-items:center;gap:18px;padding-top:6px;}
+.weather-icon{width:120px;height:120px;object-fit:contain;}
+.temp-block{display:flex;flex-direction:column;align-items:flex-start;}
+.temp{font-size:48px;font-weight:700;}
+.desc{font-size:16px;text-transform:capitalize;color:var(--accent);}
+
+/* Meta row */
+.meta-row{display:flex;gap:18px;justify-content:space-between;padding-top:8px;}
+.meta{flex:1;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:10px;border-radius:10px;text-align:center;}
+.meta-title{font-size:12px;color:var(--muted)}
+.meta-value{font-weight:600;margin-top:6px}
+
+/* Controls */
+.controls{display:flex;align-items:center;gap:12px;margin-top:12px;}
+.btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:var(--text);cursor:pointer}
+.status{margin-left:auto;font-size:13px}
+
+/* Forecast list */
+.forecast-list{display:flex;flex-direction:column;gap:10px;margin-top:12px;}
+.day-item{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+.day-item img{width:56px;height:56px}
+.day-item .day-info{flex:1}
+.day-item .day-title{font-weight:600}
+.day-item .temps{font-weight:700;color:var(--accent)}
+
+/* Footer */
+.footer{text-align:center;margin-top:18px;color:var(--muted);font-size:13px}
+
+/* Dark / Light toggle (light mode) */
+:root.light{
+  --bg:#f7fbff;
+  --card: rgba(6,12,28,0.04);
+  --glass: rgba(255,255,255,0.6);
+  --text:#071422;
+  --muted:#2b4b6b;
+  --accent:#0ea5e9;
+  --accent-2:#0284c7;
+  --shadow: 0 8px 30px rgba(6,12,28,0.06);
+}
+:root.light body{
+  background: linear-gradient(180deg,#eff8ff 0%, #f0f7ff 60%);
+}
+
+/* Responsive */
+@media (max-width:980px){
+  .main{grid-template-columns:1fr; }
+  .forecast-card{grid-column:1/2;}
+  .lottie-bg{opacity:0.12}
+}
+@media (max-width:480px){
+  .search input{min-width:100px;}
+  .temp{font-size:40px}
+  .weather-icon{width:90px;height:90px}
+  .meta-row{flex-direction:column}
+  .meta{width:100%}
+}
